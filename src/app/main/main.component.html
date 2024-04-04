@@ -1,0 +1,33 @@
+<h2>HeartSpace,</h2>
+<div>
+<div class="login-container" *ngIf="showLogin">
+    <h2>Login</h2>
+    <form>
+        <div class="input-group">
+            <p *ngIf="showError !== ''" style="color: red;"><strong>{{showError}}</strong></p>
+            <label for="username">Nickname</label>
+            <input type="text" [(ngModel)]="username" id="username" name="username" placeholder="Enter your nickname">
+        </div>
+        <button type="button" (click)="login()">Login</button>
+    </form>
+</div>
+<div id="chat-container" *ngIf="!showLogin">
+    <div class="messages">
+        <div class="message-bot">
+          <div class="message-content bot-message">Hello {{username}}! How can I assist you today?<br>
+            <small style="color: #AAA;">HeartSpace</small>
+          </div>
+        </div>
+        <div *ngFor="let message of messages" class="message-bot">
+            <div [ngClass]="message.from == 'user' ? 'message-content user-message' : 'message-content bot-message'">{{ message.content }}<br>
+                <small style="color: #AAA;">{{message.name}}</small>
+            </div>
+        </div>
+        <i *ngIf="showTyping">typing....</i>
+    </div>
+    <div class="input-container">
+      <input #chatContainer type="text" id="user-input" [(ngModel)]="userInput" (keyup.enter)="sendMessage()" placeholder="Type your message...">
+      <button id="send-btn" (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>
