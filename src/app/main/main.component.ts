@@ -71,8 +71,6 @@ export class MainComponent implements OnInit {
 
 
   async invokeGPT() {
-
-
     if (this.promptText.length < 2)
       return;
     try {
@@ -85,12 +83,6 @@ export class MainComponent implements OnInit {
         messages: [{ role: 'user', content: this.promptText }],
         model: 'gpt-3.5-turbo',
       });
-      // const headers = new HttpHeaders({
-      //   'Content-Type': 'application/json',
-      //   'Authorization': `Bearer ${environment.apiKey}`
-      // });
-      // const completion: any = await this.http.post("https://api.openai.com/v1/completions", requestData, { headers }).toPromise();
-
 
       this.messages.push({ content: apiResponse.choices[0].message.content, from: 'bot', name:'HeartSpace' });
       this.scrollToBottom();
