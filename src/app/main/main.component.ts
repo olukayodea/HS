@@ -74,6 +74,7 @@ export class MainComponent implements OnInit {
     if (this.promptText.length < 2)
       return;
     try {
+      // this is a sample
       
       this.response =undefined;
       let configuration = {apiKey: environment.apiKey, dangerouslyAllowBrowser: true};
