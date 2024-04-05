@@ -82,7 +82,7 @@ export class MainComponent implements OnInit {
 
       let apiResponse =  await openai.chat.completions.create({
         messages: [{ role: 'user', content: this.promptText }],
-        model: 'gpt-3.5-turbo',
+        model: 'ft:gpt-3.5-turbo-0125:personal:heartspace3:9ATVorFy',
       });
 
       this.messages.push({ content: apiResponse.choices[0].message.content, from: 'bot', name:'HeartSpace' });
